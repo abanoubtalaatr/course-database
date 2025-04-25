@@ -1,0 +1,138 @@
+# SQL Practice Queries (From Easy to Advanced)
+
+This is a list of useful SQL queries to help you learn and practice SQL, starting from the easiest to more advanced ones.
+
+---
+
+## 🔹 Basic Count and Selection
+
+-- Count all rows
+SELECT COUNT(*) FROM customers;
+
+-- Count only non-null customer_id
+SELECT COUNT(customer_id) FROM customers;
+
+-- Count distinct countries
+SELECT COUNT(DISTINCT Country) FROM Customers;
+
+-- Select all customers
+SELECT * FROM customers;
+
+
+---
+
+## 🔹 Filtering by Ranges and Conditions
+
+-- Price between 1 and 5
+SELECT * FROM customers WHERE price BETWEEN 1 AND 5;
+
+-- Price NOT between 1 and 5
+SELECT * FROM customer WHERE price NOT BETWEEN 1 AND 5;
+
+-- Orders within a date range
+SELECT * FROM orders WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+
+
+---
+
+## 🔹 Pattern Matching (LIKE)
+
+-- Names ending with 's'
+SELECT * FROM customers WHERE name LIKE '%s';
+
+-- Names starting with 's'
+SELECT * FROM customers WHERE name LIKE 's%';
+
+-- Names containing 's'
+SELECT * FROM customers WHERE name LIKE '%s%';
+
+-- Name has any char, then 'r'
+SELECT * FROM customer WHERE name LIKE '_r%';
+
+-- Name starts with 'a' and at least 2 characters
+SELECT * FROM customers WHERE name LIKE 'a_%';
+
+-- Name starts with 'a' and ends with 'o'
+SELECT * FROM customers WHERE name LIKE 'a%o';
+
+
+---
+
+## 🔹 Using IN and NOT IN
+
+-- Name not in abanoub or gaid
+SELECT * FROM customer WHERE name NOT IN ('abanoub', 'gaid');
+
+-- Country exists in suppliers table
+SELECT * FROM customers WHERE Country IN (SELECT Country FROM Suppliers);
+
+
+---
+
+## 🔹 Other Filters
+
+-- Name not equal to 'abanoub'
+SELECT * FROM customers WHERE name <> 'abanoub';
+
+-- Price greater than or equal 100
+SELECT * FROM products WHERE price >= 100;
+
+-- Invalid example (wrong logic): checking name in prices
+-- SELECT * FROM customers WHERE price IN ('abanoub','gaid');
+
+-- Name is 'abanoub' AND 'gaid' (will always return 0)
+SELECT * FROM customer WHERE name = 'abanoub' AND name = 'gaid';
+
+-- Name is 'abanoub' OR 'gaid'
+SELECT * FROM customer WHERE name = 'abanoub' OR name = 'gaid';
+
+-- Name is NOT 'abanoub'
+SELECT * FROM customer WHERE NOT name = 'abanoub';
+
+-- Name is not 'gaid' and not 'abanoub'
+SELECT * FROM customer WHERE name <> 'gaid' AND name <> 'abanoub';
+
+---
+
+## 🔹 Sorting and NULL Checking
+
+-- Order by name descending, then city ascending
+SELECT * FROM customers ORDER BY name DESC, city ASC;
+
+-- Name is null
+SELECT * FROM customers WHERE name IS NULL;
+
+-- Name is NOT null
+SELECT * FROM customers WHERE name IS NOT NULL;
+
+---
+
+## 🔹 Aggregation Functions
+
+-- Minimum price
+SELECT MIN(price) FROM products;
+
+-- Maximum price
+SELECT MAX(price) FROM products;
+
+-- Maximum price with alias
+SELECT MAX(price) AS total FROM products;
+
+-- Average price
+SELECT AVG(price) AS average FROM products;
+
+-- Rounded average price to 2 decimals
+SELECT ROUND(AVG(price), 2) AS average_price FROM products;
+
+-- Count cities
+SELECT COUNT(city) FROM customers;
+
+---
+
+## 🔹 Pagination
+
+-- Skip 3 rows, then get next 3 rows
+SELECT * FROM customer LIMIT 3 OFFSET 3;
+
+---
+
