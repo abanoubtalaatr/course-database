@@ -136,3 +136,26 @@ SELECT * FROM customer LIMIT 3 OFFSET 3;
 
 ---
 
+INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+
+INSERT INTO table_name VALUES (value1, value2, value3, ...);
+
+UPDATE actor SET first_name WHERE actor_id = 1
+
+DELETE FROM actor WHERE actor_id = 12
+
+Aggregate Functions
+
+SELECT MIN(column_name) FROM table_name WHERE condition;
+
+SELECT MAX(column_name) FROM table_name WHERE condition;
+
+SELECT AVG(column_name) FROM table_name WHERE condition;
+
+SELECT SUM(column_name) FROM table_name WHERE condition;
+
+SELECT COUNT(column_name) FROM table_name WHERE condition;
+
+---
+
+
