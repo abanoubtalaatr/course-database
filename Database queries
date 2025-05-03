@@ -134,6 +134,7 @@ SELECT COUNT(city) FROM customers;
 -- Skip 3 rows, then get next 3 rows
 SELECT * FROM customer LIMIT 3 OFFSET 3;
 
+Lesson number 3 
 ---
 
 INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
@@ -157,5 +158,22 @@ SELECT SUM(column_name) FROM table_name WHERE condition;
 SELECT COUNT(column_name) FROM table_name WHERE condition;
 
 ---
+Lesson number 4 
+-- UNION
+SELECT first_name,last_name from actor
+UNION  
+SELECT first_name, last_name FROM customer LIMIT 100
 
 
+SELECT first_name,last_name from actor
+UNION ALL
+SELECT first_name, last_name FROM customer LIMIT 100
+
+--GROUP BY
+
+SELECT rating, count(*) FROM film
+GROUP BY rating LIMIT 100
+--HAVING
+SELECT rating, count(*) as totalFilmInRating FROM film
+GROUP BY rating
+HAVING count(*) > 150 LIMIT 100
